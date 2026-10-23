@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class Main {
+
+    private static final Scanner scanner = new Scanner(System.in);
 
     static void main(String[] args) {
         displayMenu();
@@ -21,4 +25,6 @@ public class Main {
                 7 - Exit
                 """);
     }
+
+
 }
