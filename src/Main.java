@@ -9,6 +9,7 @@ public class Main {
 
     static void main(String[] args) {
         displayMenu();
+        registerEmployee();
     }
 
     private static void displayMenu() {
@@ -34,7 +35,14 @@ public class Main {
         String name = scanner.nextLine();
         System.out.println("Enter employee salary: ");
         double salary = scanner.nextDouble();
+        scanner.nextLine();
         System.out.println("Enter employee role: ");
-        Role role = Role.valueOf(scanner.nextLine().toUpperCase());
+        Role role = Role.valueOf(scanner.nextLine().trim().toUpperCase());
+
+        Employee employee = new Employee(name, salary, role);
+        employees.add(employee);
+
+        System.out.println("Employee registered successfully!");
+
     }
 }
