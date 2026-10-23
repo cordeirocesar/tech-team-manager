@@ -19,6 +19,9 @@ public class Main {
             if (choice == 2) {
                 listEmployees();
             }
+            if (choice == 3) {
+                displayFinalSalaries();
+            }
         } while(choice != 7);
 
 
@@ -71,5 +74,17 @@ public class Main {
             System.out.println("Role: " + employee.getRole().getDescription());
             System.out.println("--------------------");
         }
+    }
+
+    private static void displayFinalSalaries() {
+        for (Employee employee : employees) {
+            String name = employee.getName();
+            double baseSalary = employee.getSalary();
+            double finalSalary = baseSalary + employee.getRole().calculateBonus(baseSalary);
+            System.out.println(name + " Final salary: " + finalSalary);
+            System.out.println("--------------------");
+
+        }
+
     }
 }
