@@ -44,7 +44,11 @@ public class Main {
         double salary = scanner.nextDouble();
         scanner.nextLine();
         System.out.println("Enter employee role (DEVELOPER, PRODUCT_MANAGER, DEVOPS): ");
-        Role role = Role.valueOf(scanner.nextLine().trim().toUpperCase());
+        String roleInput = scanner.nextLine()
+                .trim()
+                .toUpperCase()
+                .replaceAll("\\s+", "_");
+        Role role = Role.valueOf(roleInput);
 
         Employee employee = new Employee(name, salary, role);
         employees.add(employee);
