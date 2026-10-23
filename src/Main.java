@@ -22,6 +22,9 @@ public class Main {
             if (choice == 3) {
                 displayFinalSalaries();
             }
+            if (choice == 4) {
+                displayEmployeeWithHighestSalary();
+            }
         } while(choice != 7);
 
 
@@ -84,6 +87,28 @@ public class Main {
             System.out.println(name + " Final salary: " + finalSalary);
             System.out.println("--------------------");
 
+        }
+
+    }
+
+    private static void displayEmployeeWithHighestSalary() {
+        Employee employeeWithHighestSalary = null;
+        for (Employee employee : employees) {
+         if (employeeWithHighestSalary == null) {
+             employeeWithHighestSalary = employee;
+         } else {
+             double baseSalaryEmployeeWithHighestSalary = employeeWithHighestSalary.getSalary();
+             double BonusSalaryEmployeeWithHighestSalary = employeeWithHighestSalary.getRole().calculateBonus(baseSalaryEmployeeWithHighestSalary);
+             double finalSalaryEmployeeWithHighestSalary = baseSalaryEmployeeWithHighestSalary + BonusSalaryEmployeeWithHighestSalary;
+
+             if(employee.getSalary() + employee.getRole().calculateBonus(employee.getSalary()) > finalSalaryEmployeeWithHighestSalary){
+                 employeeWithHighestSalary = employee;
+             }
+         }
+
+        }
+        if (employeeWithHighestSalary != null) {
+            System.out.println("Employee with highest final salary: " + employeeWithHighestSalary.getName());
         }
 
     }
