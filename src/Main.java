@@ -16,6 +16,9 @@ public class Main {
             if (choice == 1) {
                 registerEmployee();
             }
+            if (choice == 2) {
+                listEmployees();
+            }
         } while(choice != 7);
 
 
@@ -54,7 +57,19 @@ public class Main {
         employees.add(employee);
 
         System.out.println("Employee registered successfully!");
+    }
 
+    private static void listEmployees() {
 
+        if (employees.isEmpty()) {
+            System.out.println("No employees registered.");
+            return;
+        }
+
+        for (Employee employee : employees) {
+            System.out.println("Name: " + employee.getName());
+            System.out.println("Role: " + employee.getRole().getDescription());
+            System.out.println("--------------------");
+        }
     }
 }
