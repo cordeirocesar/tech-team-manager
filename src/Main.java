@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
+    private static final List<Employee> employees = new ArrayList<>();
 
     static void main(String[] args) {
         displayMenu();
@@ -26,5 +29,12 @@ public class Main {
                 """);
     }
 
-
+    private static void registerEmployee() {
+        System.out.println("Enter employee name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter employee salary: ");
+        double salary = scanner.nextDouble();
+        System.out.println("Enter employee role: ");
+        Role role = Role.valueOf(scanner.nextLine().toUpperCase());
+    }
 }
