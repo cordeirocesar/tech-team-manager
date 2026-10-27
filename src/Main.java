@@ -1,11 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<Employee> employees = new ArrayList<>();
+
 
     static void main(String[] args) {
         int choice;
@@ -24,6 +23,9 @@ public class Main {
             }
             if (choice == 4) {
                 displayEmployeeWithHighestSalary();
+            }
+            if (choice == 5) {
+                displayEmployeeCountByRole();
             }
         } while(choice != 7);
 
@@ -80,13 +82,16 @@ public class Main {
     }
 
     private static void displayFinalSalaries() {
-        for (Employee employee : employees) {
-            String name = employee.getName();
-            double baseSalary = employee.getSalary();
-            double finalSalary = baseSalary + employee.getRole().calculateBonus(baseSalary);
-            System.out.println(name + " Final salary: " + finalSalary);
-            System.out.println("--------------------");
+        if (employees.isEmpty()) {
+            System.out.println("No employees registered.");
+            return;
+        }
 
+        for (Employee employee : employees) {
+            System.out.println(
+                    employee.getName() + " Final salary: " + employee.getFinalSalary()
+            );
+            System.out.println("--------------------");
         }
 
     }
@@ -109,6 +114,31 @@ public class Main {
         } else {
             System.out.println("No employee cadastred");
         }
+        System.out.println("--------------------");
 
+    }
+
+    private static void displayEmployeeCountByRole() {
+
+        if (employees.isEmpty()) {
+            System.out.println("No employees registered.");
+            return;
+        }
+
+        Map<Role, Integer> employeeCountByRole = new HashMap<>();
+
+        for (Employee employee : employees) {
+            Role role = employee.getRole();
+
+            int currentCount = employeeCountByRole.getOrDefault(role, 0);
+
+            employeeCountByRole.put(role, currentCount + 1);
+        }
+
+        for (Map.Entry<Role, Integer> entry : employeeCountByRole.entrySet()) {
+            System.out.println(
+                    entry.getKey().getDescription() + ": " + entry.getValue()
+            );
+        }
     }
 }
