@@ -97,11 +97,8 @@ public class Main {
          if (employeeWithHighestSalary == null) {
              employeeWithHighestSalary = employee;
          } else {
-             double baseSalaryEmployeeWithHighestSalary = employeeWithHighestSalary.getSalary();
-             double BonusSalaryEmployeeWithHighestSalary = employeeWithHighestSalary.getRole().calculateBonus(baseSalaryEmployeeWithHighestSalary);
-             double finalSalaryEmployeeWithHighestSalary = baseSalaryEmployeeWithHighestSalary + BonusSalaryEmployeeWithHighestSalary;
 
-             if(employee.getSalary() + employee.getRole().calculateBonus(employee.getSalary()) > finalSalaryEmployeeWithHighestSalary){
+             if(employee.getFinalSalary() > employeeWithHighestSalary.getFinalSalary()){
                  employeeWithHighestSalary = employee;
              }
          }
@@ -109,6 +106,8 @@ public class Main {
         }
         if (employeeWithHighestSalary != null) {
             System.out.println("Employee with highest final salary: " + employeeWithHighestSalary.getName());
+        } else {
+            System.out.println("No employee cadastred");
         }
 
     }
