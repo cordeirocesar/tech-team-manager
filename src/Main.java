@@ -27,6 +27,9 @@ public class Main {
             if (choice == 5) {
                 displayEmployeeCountByRole();
             }
+            if (choice == 6) {
+                searchEmployeeByName();
+            }
         } while(choice != 7);
 
 
@@ -141,4 +144,33 @@ public class Main {
             );
         }
     }
+
+        private static void searchEmployeeByName() {
+            if (employees.isEmpty()) {
+                System.out.println("No employees registered.");
+                return;
+            }
+
+            System.out.println("Enter employee name: ");
+            String name = scanner.nextLine().trim();
+
+            boolean found = false;
+
+            for (Employee employee : employees) {
+                if (employee.getName().equalsIgnoreCase(name)) {
+                    System.out.println("Employee found successfully!");
+                    System.out.println("Name: " + employee.getName());
+                    System.out.println("Role: " + employee.getRole().getDescription());
+                    System.out.println("Salary: " + employee.getSalary());
+                    System.out.println("Final salary: " + employee.getFinalSalary());
+                    System.out.println("--------------------");
+
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                System.out.println("Employee not found.");
+            }
+        }
 }
