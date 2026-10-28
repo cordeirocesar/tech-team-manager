@@ -12,25 +12,26 @@ public class Main {
             displayMenu();
             choice = scanner.nextInt();
             scanner.nextLine();
-            if (choice == 1) {
+            if (choice == Choice.REGISTER_EMPLOYEE.getCode()) {
                 registerEmployee();
             }
-            if (choice == 2) {
+            if (choice == Choice.LIST_EMPLOYEES.getCode()) {
                 listEmployees();
+                continue;
             }
-            if (choice == 3) {
+            if (choice == Choice.DISPLAY_FINAL_SALARY.getCode()) {
                 displayFinalSalaries();
             }
-            if (choice == 4) {
+            if (choice == Choice.DISPLAY_EMPLOYEE_WITH_HIGHEST_SALARY.getCode()) {
                 displayEmployeeWithHighestSalary();
             }
-            if (choice == 5) {
+            if (choice == Choice.DISPLAY_EMPLOYEE_COUNT_BY_ROLE.getCode()) {
                 displayEmployeeCountByRole();
             }
-            if (choice == 6) {
+            if (choice == Choice.SEARCH_EMPLOYEE_BY_NAME.getCode()) {
                 searchEmployeeByName();
             }
-        } while(choice != 7);
+        } while(choice != Choice.EXIT.getCode());
 
 
     }
