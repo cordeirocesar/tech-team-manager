@@ -12,4 +12,13 @@ public class EmployeeService {
     public List<Employee> getAllEmployees() {
         return new ArrayList<>(employees);
     }
+
+    public Employee findEmployeeByName(String name) {
+        for (Employee employee : employees) {
+            if (employee.getName().equalsIgnoreCase(name.trim())) {
+                return employee;
+            }
+        }
+        return null;
+    }
 }

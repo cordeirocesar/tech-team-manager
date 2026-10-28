@@ -151,19 +151,16 @@ public class Main {
     }
 
         private static void searchEmployeeByName() {
-            List<Employee> employees = employeeService.getAllEmployees();
-            if (employees.isEmpty()) {
-                System.out.println("No employees registered.");
-                return;
-            }
-
             System.out.println("Enter employee name: ");
             String name = scanner.nextLine().trim();
 
-            boolean found = false;
+            Employee employee = employeeService.findEmployeeByName(name);
 
-            for (Employee employee : employees) {
-                if (employee.getName().equalsIgnoreCase(name)) {
+           if (employee == null) {
+               System.out.println("Employeed not found!");
+               return;
+           }
+
                     System.out.println("Employee found successfully!");
                     System.out.println("Name: " + employee.getName());
                     System.out.println("Role: " + employee.getRole().getDescription());
@@ -171,12 +168,5 @@ public class Main {
                     System.out.println("Final salary: " + employee.getFinalSalary());
                     System.out.println("--------------------");
 
-                    found = true;
-                }
-            }
-
-            if (!found) {
-                System.out.println("Employee not found.");
-            }
         }
 }
