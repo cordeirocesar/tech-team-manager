@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final List<Employee> employees = new ArrayList<>();
+    private static final EmployeeService employeeService = new EmployeeService();
 
 
     static void main(String[] args) {
@@ -66,7 +66,7 @@ public class Main {
         Role role = Role.valueOf(roleInput);
 
         Employee employee = new Employee(name, salary, role);
-        employees.add(employee);
+        employeeService.addEmployee(employee);
 
         System.out.println("Employee registered successfully!");
     }
