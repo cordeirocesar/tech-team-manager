@@ -8,4 +8,8 @@ public class EmployeeService {
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
+
+    public List<Employee> getAllEmployees() {
+        return new ArrayList<>(employees);
+    }
 }
