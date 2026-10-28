@@ -38,4 +38,21 @@ public class EmployeeService {
 
         return employeeCountByRole;
     }
+
+    public Employee findEmployeeWithHighestSalary() {
+        if (employees.isEmpty()) {
+            return null;
+        }
+
+        Employee employeeWithHighestSalary = employees.get(0);
+
+        for (Employee employee : employees) {
+            if (employee.getFinalSalary()
+                    > employeeWithHighestSalary.getFinalSalary()) {
+                employeeWithHighestSalary = employee;
+            }
+        }
+
+        return employeeWithHighestSalary;
+    }
 }

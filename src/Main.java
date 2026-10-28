@@ -103,24 +103,18 @@ public class Main {
     }
 
     private static void displayEmployeeWithHighestSalary() {
-        List<Employee> employees = employeeService.getAllEmployees();
-        Employee employeeWithHighestSalary = null;
-        for (Employee employee : employees) {
-         if (employeeWithHighestSalary == null) {
-             employeeWithHighestSalary = employee;
-         } else {
+        Employee employeeWithHighestSalary =
+                employeeService.findEmployeeWithHighestSalary();
 
-             if(employee.getFinalSalary() > employeeWithHighestSalary.getFinalSalary()){
-                 employeeWithHighestSalary = employee;
-             }
-         }
-
-        }
         if (employeeWithHighestSalary != null) {
-            System.out.println("Employee with highest final salary: " + employeeWithHighestSalary.getName());
+            System.out.println(
+                    "Employee with highest final salary: "
+                            + employeeWithHighestSalary.getName()
+            );
         } else {
-            System.out.println("No employee cadastred");
+            System.out.println("No employee registered.");
         }
+
         System.out.println("--------------------");
 
     }
