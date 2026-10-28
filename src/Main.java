@@ -6,7 +6,7 @@ public class Main {
     private static final EmployeeService employeeService = new EmployeeService();
 
 
-    static void main(String[] args) {
+   public static void main(String[] args) {
         int choice;
         do {
             displayMenu();
@@ -72,6 +72,7 @@ public class Main {
     }
 
     private static void listEmployees() {
+        List<Employee> employees = employeeService.getAllEmployees();
 
         if (employees.isEmpty()) {
             System.out.println("No employees registered.");
@@ -86,6 +87,7 @@ public class Main {
     }
 
     private static void displayFinalSalaries() {
+        List<Employee> employees = employeeService.getAllEmployees();
         if (employees.isEmpty()) {
             System.out.println("No employees registered.");
             return;
@@ -101,6 +103,7 @@ public class Main {
     }
 
     private static void displayEmployeeWithHighestSalary() {
+        List<Employee> employees = employeeService.getAllEmployees();
         Employee employeeWithHighestSalary = null;
         for (Employee employee : employees) {
          if (employeeWithHighestSalary == null) {
@@ -123,6 +126,7 @@ public class Main {
     }
 
     private static void displayEmployeeCountByRole() {
+        List<Employee> employees = employeeService.getAllEmployees();
 
         if (employees.isEmpty()) {
             System.out.println("No employees registered.");
@@ -147,6 +151,7 @@ public class Main {
     }
 
         private static void searchEmployeeByName() {
+            List<Employee> employees = employeeService.getAllEmployees();
             if (employees.isEmpty()) {
                 System.out.println("No employees registered.");
                 return;
