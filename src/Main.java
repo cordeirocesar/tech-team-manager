@@ -126,21 +126,12 @@ public class Main {
     }
 
     private static void displayEmployeeCountByRole() {
-        List<Employee> employees = employeeService.getAllEmployees();
+        Map<Role, Integer> employeeCountByRole =
+                employeeService.getEmployeeCountByRole();
 
-        if (employees.isEmpty()) {
+        if (employeeCountByRole.isEmpty()) {
             System.out.println("No employees registered.");
             return;
-        }
-
-        Map<Role, Integer> employeeCountByRole = new HashMap<>();
-
-        for (Employee employee : employees) {
-            Role role = employee.getRole();
-
-            int currentCount = employeeCountByRole.getOrDefault(role, 0);
-
-            employeeCountByRole.put(role, currentCount + 1);
         }
 
         for (Map.Entry<Role, Integer> entry : employeeCountByRole.entrySet()) {

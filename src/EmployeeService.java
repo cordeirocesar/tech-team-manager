@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmployeeService {
 
@@ -20,5 +22,20 @@ public class EmployeeService {
             }
         }
         return null;
+    }
+
+    public Map<Role, Integer> getEmployeeCountByRole() {
+        Map<Role, Integer> employeeCountByRole = new HashMap<>();
+
+        for (Employee employee : employees) {
+            Role role = employee.getRole();
+
+
+            int currentCount = employeeCountByRole.getOrDefault(role, 0);
+
+            employeeCountByRole.put(role, currentCount + 1);
+        }
+
+        return employeeCountByRole;
     }
 }
